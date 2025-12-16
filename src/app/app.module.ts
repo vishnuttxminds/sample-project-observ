@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WebsiteFilterPipe } from './shared/website-filter.pipe';
+import { HighlightNameDirective } from './directives/highlight-name.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WebsiteFilterPipe
+    WebsiteFilterPipe,
+    HighlightNameDirective,
   ],
   imports: [
     BrowserModule,

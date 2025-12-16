@@ -1,5 +1,12 @@
-
 <router-outlet></router-outlet>
-<li *ngFor="let user of users | websiteFilter:'.org'">
- Name: {{ user.name }} - Website:{{ user.website }}
+<li *ngFor="let user of users | websiteFilter: '.org'">
+  Name: {{ user.name }} - Website:{{ user.website }}
 </li>
+
+<br />
+
+<ul>
+  <li *ngFor="let user of users" appHighlightName [website]="user.website">
+    Name: {{ user.name }} - {{ user.website }}
+  </li>
+</ul>
