@@ -10,18 +10,21 @@ import { WebsiteUserService } from './services/website-user.service';
 export class AppComponent implements OnInit {
   title = 'sample-app-obs';
   users: any[] = [];
-  
+
   orgUsers$ = this.websiteUserService.orgUsers$;
-  constructor(private apiService: ApiServiceService, private websiteUserService: WebsiteUserService) {}
+  constructor(
+    private apiService: ApiServiceService,
+    private websiteUserService: WebsiteUserService
+  ) {}
   ngOnInit(): void {
     this.getDetails();
+    this.websiteUserService.getDetails();
   }
 
   getDetails() {
     this.apiService.getDetails().subscribe({
       next: (res: any) => {
         // console.log('API success:', res);
-        this.websiteUserService.setUsers(res)
         this.users = Array.isArray(res) ? res : [res];
       },
       error: (err) => {
