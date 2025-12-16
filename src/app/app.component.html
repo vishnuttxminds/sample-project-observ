@@ -1,2 +1,5 @@
 
 <router-outlet></router-outlet>
+<li *ngFor="let user of users | websiteFilter:'.org'">
+ Name: {{ user.name }} - Website:{{ user.website }}
+</li>
