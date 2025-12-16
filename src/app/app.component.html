@@ -10,3 +10,10 @@
     Name: {{ user.name }} - {{ user.website }}
   </li>
 </ul>
+
+
+<ul>
+  <li *ngFor="let user of orgUsers$ | async">
+    Name: {{ user.name }} - {{ user.website }}
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from './service/api-service.service';
+import { WebsiteUserService } from './services/website-user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { ApiServiceService } from './service/api-service.service';
 export class AppComponent implements OnInit {
   title = 'sample-app-obs';
   users: any[] = [];
-  constructor(private apiService: ApiServiceService) {}
+  
+  orgUsers$ = this.websiteUserService.orgUsers$;
+  constructor(private apiService: ApiServiceService, private websiteUserService: WebsiteUserService) {}
   ngOnInit(): void {
     this.getDetails();
   }
@@ -18,7 +21,7 @@ export class AppComponent implements OnInit {
     this.apiService.getDetails().subscribe({
       next: (res: any) => {
         // console.log('API success:', res);
-
+        this.websiteUserService.setUsers(res)
         this.users = Array.isArray(res) ? res : [res];
       },
       error: (err) => {
